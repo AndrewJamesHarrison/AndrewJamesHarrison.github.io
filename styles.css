@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.main-menu {
+    font-size: 24px;
+}
+
 h1 {
     font-family: Cabin;
     font-size: 24px;
