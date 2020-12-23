@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Cabin" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
 </head>
 
 <body>
+  <div class="main-header">
+    <h1>Wizard Tricks Gaming Releases</h1>
+  </div>
   <div class="main-container">
-    <div>
-      <h1>Wizard Tricks Gaming Releases</h1>
+    <div class="main-menu">
       <ul>
         <li>
-          <a href="rpg-games/The Sorcerer Supreme.pdf" download>The Sorcerer Supreme</a>
+          <a class="btn menu-button waves-effect waves-accent" name="MenuButton" id="SorcererSupremeButton"><i class="material-icons menu-icon">science</i>Sorcerer Supreme</a>
         </li>
         <li>
-          <a href="rpg-games/Caper.pdf" download>Caper</a>
+          <a class="btn menu-button waves-effect waves-accent" name="MenuButton" id="CaperButton"><i class="material-icons menu-icon">business</i>Caper</a>
         </li>
         <li>
-          <a href="rpg-games/BoneRPG.pdf" download>BoneRPG</a>
+          <a class="btn menu-button waves-effect waves-accent" name="MenuButton" id="BoneRpgButton"><i class="material-icons menu-icon">do_not_touch</i>BoneRPG</a>
         </li>
       </ul>
     </div>
+    <div class="pdf-content" id="adobe-dc-view"></div>
   </div>
+
+  <!-- 3rd party scripts -->
+  <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script type="text/javascript">
+    let pdfSelection = "SorcererSupremeButton";
+    let adobeDCView;
+    const pdfMapping = { SorcererSupremeButton: "The Sorcerer Supreme.pdf", CaperButton: "Caper.pdf", BoneRpgButton: "BoneRPG.pdf" };
+    document.addEventListener("adobe_dc_view_sdk.ready", function () {
+      adobeDCView = new AdobeDC.View({ clientId: "6538e238c941463b86f42b20e4345b16", divId: "adobe-dc-view" });
+      previewFile();
+    });
+
+    document.getElementsByName("MenuButton").forEach(function (element) {
+      element.addEventListener("click", function () {
+        pdfSelection = this.id;
+        previewFile();
+      });
+    });
+
+    function previewFile() {
+      adobeDCView = new AdobeDC.View({ clientId: "6538e238c941463b86f42b20e4345b16", divId: "adobe-dc-view" });
+      adobeDCView.previewFile(
+        {
+          content: { location: { url: `rpg-games/${pdfMapping[pdfSelection]}` } },
+          metaData: { fileName: pdfMapping[pdfSelection] },
+        },
+        {}
+      );
+    }
+  </script>
 </body>
