@@ -31,11 +31,11 @@
   <script type="text/javascript" src="assets/js/materialize.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script type="text/javascript">
+    const pdfApiKey = "c196192515a045278425edfe7ffd1a19";
     let pdfSelection = "SorcererSupremeButton";
     let adobeDCView;
     const pdfMapping = { SorcererSupremeButton: "The Sorcerer Supreme.pdf", CaperButton: "Caper.pdf", BoneRpgButton: "BoneRPG.pdf" };
     document.addEventListener("adobe_dc_view_sdk.ready", function () {
-      adobeDCView = new AdobeDC.View({ clientId: "6538e238c941463b86f42b20e4345b16", divId: "adobe-dc-view" });
       previewFile();
     });
 
@@ -47,7 +47,7 @@
     });
 
     function previewFile() {
-      adobeDCView = new AdobeDC.View({ clientId: "6538e238c941463b86f42b20e4345b16", divId: "adobe-dc-view" });
+      adobeDCView = new AdobeDC.View({ clientId: pdfApiKey, divId: "adobe-dc-view" });
       adobeDCView.previewFile(
         {
           content: { location: { url: `rpg-games/${pdfMapping[pdfSelection]}` } },
