@@ -1,15 +1,26 @@
 :root {
     --main-color: rgb(128, 172, 255);
-    --main-accent: rgb(144, 68, 216);
+    --header-color: rgba(255, 253, 128, 0.342);
+    --main-accent: rgba(29, 66, 167, 0.712);
+    --main-background-color: rgba(255, 253, 128, 0.342);
     --standard-text-color: #282828;
     --light-text-color: #ffffff;
 }
 
 .main-container {
-    display: flex;
-    margin: 0px 30px;
-    flex-direction: row;
-    height: 80vh
+    display: grid;
+    grid-template-columns: auto 600px auto;
+    height: 80vh;
+    overflow: auto;
+}
+
+.page {
+    grid-column-start: 2;
+}
+
+.parent-container {
+    height: 100vh;
+    background-image: linear-gradient(var(--main-background-color), var(--main-color));
 }
 
 .main-menu {
@@ -23,7 +34,6 @@
 .main-header {
     display: flex;
     justify-content: center;
-    background-color: var(--main-color);
 }
 
 .menu-icon {
