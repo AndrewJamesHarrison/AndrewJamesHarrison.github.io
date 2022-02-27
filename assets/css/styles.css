@@ -9,13 +9,26 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: auto 600px auto;
+    grid-template-columns: auto minmax(600px, 40vw) auto;
     height: 80vh;
     overflow: auto;
 }
 
 .page {
     grid-column-start: 2;
+}
+
+.action-container {
+    display: grid;
+    grid-template-columns: auto minmax(600px, 40vw) auto;
+}
+
+.action-buttons {
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .parent-container {
@@ -58,4 +71,8 @@
 
 h1 {
     color: var(--standard-text-color)
+}
+
+.page-hidden {
+    display: none;
 }
