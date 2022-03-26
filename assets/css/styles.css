@@ -9,9 +9,10 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: auto minmax(600px, 40vw) auto;
+    grid-template-columns: minmax(300px, 20vw) minmax(600px, 40vw) auto;
     height: 80vh;
     overflow: auto;
+    align-items: start;
 }
 
 .page {
@@ -20,7 +21,7 @@
 
 .action-container {
     display: grid;
-    grid-template-columns: auto minmax(600px, 40vw) auto;
+    grid-template-columns: minmax(300px, 20vw) minmax(600px, 40vw) auto;
 }
 
 .action-buttons {
@@ -73,6 +74,20 @@ h1 {
     color: var(--standard-text-color)
 }
 
+li {
+    margin: 10px 0px;
+}
+
 .page-hidden {
     display: none;
+}
+
+.menu-container {
+    position: sticky;
+    top: 100px;
+    padding: 20px;
+    grid-column-start: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
