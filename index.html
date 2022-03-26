@@ -24,25 +24,22 @@
       <div class="menu-container">
         <ul>
           <li>
-            <button class="btn menu-button">Rabbit Keeper</button>
+            <button class="btn menu-button side-menu-button">Rabbit Keeper</button>
           </li>
           <li>
-            <button class="btn menu-button">Stormchaser</button>
+            <button class="btn menu-button side-menu-button">Stormchaser</button>
           </li>
           <li>
-            <button class="btn menu-button">The Confidence Man</button>
+            <button class="btn menu-button side-menu-button">The Confidence Man</button>
           </li>
           <li>
-            <button class="btn menu-button">Tracker</button>
+            <button class="btn menu-button side-menu-button">Tracker</button>
           </li>
           <li>
-            <button class="btn menu-button">Rabbit Keeper</button>
+            <button class="btn menu-button side-menu-button">The Other One</button>
           </li>
           <li>
-            <button class="btn menu-button">The Other One</button>
-          </li>
-          <li>
-            <button class="btn menu-button">Gilded Cage</button>
+            <button class="btn menu-button side-menu-button">Gilded Cage</button>
           </li>
         </ul>
       </div>
@@ -858,6 +855,7 @@
     const pages = document.getElementsByClassName('page');
     const previousPageButton = document.getElementById('PreviousPageButton');
     const nextPageButton = document.getElementById('NextPageButton');
+    const menuButtons = Array.prototype.slice.call(document.getElementsByClassName('side-menu-button'));
     let index = 0;
 
     previousPageButton.addEventListener('click', event => {
@@ -874,6 +872,14 @@
         index++;
         pages[index].classList.remove(['page-hidden']);
       }
+    });
+
+    menuButtons.forEach((button, menuIndex) => {
+      button.addEventListener('click', event => {
+        pages[index].classList.add(['page-hidden']);
+        index = menuIndex;
+        pages[index].classList.remove(['page-hidden']);
+      });
     });
 
   </script>
